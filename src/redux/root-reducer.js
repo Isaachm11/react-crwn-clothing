@@ -3,9 +3,10 @@
 // this action is an object that has a type (string) that tells the specific action and a payload (any)
 
 import { combineReducers } from 'redux';
-
 import userReducer from './user/user.reducer';
+import cartReducer from './cart/cart.reducer';
 
 export default combineReducers({
-    user: userReducer
+    user: userReducer,
+    cart: cartReducer
 })

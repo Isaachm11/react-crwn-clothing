@@ -12,12 +12,6 @@ import Header from "./components/header/header.component.jsx";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils.js";
 
-// const HatsPage = () => (
-//   <div>
-//     <h1>HATS PAGE</h1>
-//   </div>
-// );
-
 class App extends React.Component {
   // Var to log out the user
   unsubscibreFromAuth = null;
