@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import "./App.css";
 
 import { setCurrentUser } from "./redux/user/user.actions";
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from "./redux/user/user.selector";
 
 import HomePage from "./pages/homepage/homepage.component.jsx";
 import ShopPage from "./pages/shop/shop.component.jsx";
@@ -67,8 +69,8 @@ class App extends React.Component {
 }
 
 // Destructure the user reducer from state
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = (dispatch) => ({

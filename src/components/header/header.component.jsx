@@ -4,13 +4,19 @@ import { Link } from "react-router-dom";
 // The connect() function connects a React component to a Redux store.
 import { connect } from "react-redux";
 
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from '../../redux/user/user.selector';
+import { selectCartHidden } from '../../redux/cart/cart.selectos';
+
 import "./header.styles.scss";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
+// Firebase
 import { auth } from "../../firebase/firebase.utils.js";
 
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+
 
 const Header = ({ currentUser, hidden }) => (
   <div className="header">
@@ -40,10 +46,9 @@ const Header = ({ currentUser, hidden }) => (
   </div>
 );
 
-//                      rootReducer
-const mapStateToProps = ({ user, cart }) => ({
-  currentUser: user.currentUser,
-  hidden: cart.hidden,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden,
 });
 
 export default connect(mapStateToProps)(Header);
