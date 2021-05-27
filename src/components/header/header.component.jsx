@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { createStructuredSelector } from 'reselect';
-import { selectCurrentUser } from '../../redux/user/user.selector';
-import { selectCartHidden } from '../../redux/cart/cart.selectos';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
 
 import "./header.styles.scss";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
