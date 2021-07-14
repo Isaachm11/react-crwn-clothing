@@ -26,22 +26,22 @@ class App extends React.Component {
   componentDidMount() {
     const { setCurrentUser } = this.props;
 
-    // this.unsubscibreFromAuth = auth.onAuthStateChanged(...
-    // Returns a method that when is called, it signs out the user
-    this.unsubscibreFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
+    // // this.unsubscibreFromAuth = auth.onAuthStateChanged(...
+    // // Returns a method that when is called, it signs out the user
+    // this.unsubscibreFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocument(userAuth);
 
-        userRef.onSnapshot((snapShot) => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          });
-        });
-      } else {
-        setCurrentUser(null);
-      }
-    });
+    //     userRef.onSnapshot((snapShot) => {
+    //       setCurrentUser({
+    //         id: snapShot.id,
+    //         ...snapShot.data(),
+    //       });
+    //     });
+    //   } else {
+    //     setCurrentUser(null);
+    //   }
+    // });
   }
 
   // Log out the user

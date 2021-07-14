@@ -1,8 +1,4 @@
 import ShopActionTypes from "./shop.types";
-import {
-  firestore,
-  convertCollectionSnapshotToMap,
-} from "../../firebase/firebase.utils";
 
 // Made because of redux-thunk
 export const fetchCollectionsStart = () => ({
@@ -19,17 +15,19 @@ export const fetchCollectionsFailure = (errorMessage) => ({
   payload: errorMessage,
 });
 
-export const fetchCollectionsStartAsync = () => {
-  return (dispatch) => {
-    const collectionRef = firestore.collection("collections");
-    dispatch(fetchCollectionsStart());
+// Handle asynchronous activity in an action instead of in a component
+// Redux-Thunk middleware enters here
+// export const fetchCollectionsStartAsync = () => {
+//   return (dispatch) => {
+//     const collectionRef = firestore.collection("collections");
+//     dispatch(fetchCollectionsStart());
 
-    collectionRef
-      .get()
-      .then((snapShot) => {
-        const collectionsMap = convertCollectionSnapshotToMap(snapShot);
-        dispatch(fetchCollectionsSuccess(collectionsMap));
-      })
-      .catch((error) => dispatch(fetchCollectionsFailure(error.message)));
-  };
-};
+//     collectionRef
+//       .get()
+//       .then((snapShot) => {
+//         const collectionsMap = convertCollectionSnapshotToMap(snapShot);
+//         dispatch(fetchCollectionsSuccess(collectionsMap));
+//       })
+//       .catch((error) => dispatch(fetchCollectionsFailure(error.message)));
+//   };
+// };
