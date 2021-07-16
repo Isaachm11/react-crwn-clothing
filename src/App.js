@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import "./App.css";
 
-import { setCurrentUser } from "./redux/user/user.actions";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 
@@ -14,17 +13,16 @@ import CheckoutPage from "./pages/checkout/checkout.component";
 
 import Header from "./components/header/header.component.jsx";
 
-import {
-  auth,
-  createUserProfileDocument,
-} from "./firebase/firebase.utils.js";
+// import {
+//   auth,
+//   createUserProfileDocument,
+// } from "./firebase/firebase.utils.js";
 
 class App extends React.Component {
   // Var to log out the user
   unsubscibreFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
 
     // // this.unsubscibreFromAuth = auth.onAuthStateChanged(...
     // // Returns a method that when is called, it signs out the user
@@ -79,8 +77,4 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

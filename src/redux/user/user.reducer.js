@@ -7,15 +7,13 @@ const INITIAL_STATE = {
 };
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case UserActionTypes.GOOGLE_SING_IN_SUCCESS:
-    case UserActionTypes.EMAIL_SING_IN_SUCCESS:
+    case UserActionTypes.SING_IN_SUCCESS:
       return {
         ...state,
         currentUser: action.payload,
         error: null,
       };
-    case UserActionTypes.GOOGLE_SING_IN_FAILURE:
-    case UserActionTypes.EMAIL_SING_IN_FAILURE:
+    case UserActionTypes.SING_IN_FAILURE:
       return {
         ...state,
         error: action.payload,
