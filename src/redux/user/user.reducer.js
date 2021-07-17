@@ -13,7 +13,14 @@ const userReducer = (state = INITIAL_STATE, action) => {
         currentUser: action.payload,
         error: null,
       };
+    case UserActionTypes.SING_OUT_SUCCESS:
+      return {
+        ...state,
+        currentUser: null,
+        error: null,
+      };
     case UserActionTypes.SING_IN_FAILURE:
+    case UserActionTypes.SING_OUT_FAILURE:
       return {
         ...state,
         error: action.payload,

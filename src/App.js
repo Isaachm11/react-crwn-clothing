@@ -5,6 +5,7 @@ import "./App.css";
 
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import { checkUserSession } from "./redux/user/user.actions";
 
 import HomePage from "./pages/homepage/homepage.component.jsx";
 import ShopPage from "./pages/shop/shop.component.jsx";
@@ -23,6 +24,8 @@ class App extends React.Component {
   unsubscibreFromAuth = null;
 
   componentDidMount() {
+    const { checkUserSession } = this.props;
+    checkUserSession();
 
     // // this.unsubscibreFromAuth = auth.onAuthStateChanged(...
     // // Returns a method that when is called, it signs out the user
@@ -74,7 +77,11 @@ class App extends React.Component {
 
 // Destructure the user reducer from state
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => ({
+  checkUserSession: () => dispatch(checkUserSession()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

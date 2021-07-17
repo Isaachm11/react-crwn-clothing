@@ -11,7 +11,7 @@ export const googleSignInStart = () => ({
 
 export const emailSignInStart = (emailAndPassword) => ({
   type: UserActionTypes.EMAIL_SING_IN_START,
-  payload: emailAndPassword
+  payload: emailAndPassword,
 });
 
 export const signInSuccess = (user) => ({
@@ -24,3 +24,19 @@ export const signInFailure = (error) => ({
   payload: error,
 });
 
+export const checkUserSession = () => ({
+  type: UserActionTypes.CHECK_USER_SESSION,
+});
+
+export const signOutStart = () => ({
+  type: UserActionTypes.SING_OUT_START,
+});
+
+export const signOutSuccess = () => ({
+  type: UserActionTypes.SING_OUT_SUCCESS,
+});
+
+export const signOutFailure = (error) => ({
+  type: UserActionTypes.SING_OUT_SUCCESS,
+  payload: error,
+});
