@@ -1,7 +1,7 @@
 // Sagas help run functions concurrently: Run them all together in a way that does not block the execution
 // Help run the app and another sagas without having to wait for one to finish
 // Also we can cancel a task
-import { takeLatest, call, put } from "redux-saga/effects";
+import { takeLatest, all, call, put } from "redux-saga/effects";
 
 import ShopActionTypes from "./shop.types";
 import {
@@ -28,9 +28,13 @@ export function* fetchCollectionsAsync() {
   }
 }
 
-export function* fetchCollectionsStart() {
+export function* onFetchCollectionsStart() {
   yield takeLatest(
     ShopActionTypes.FECTCH_COLLECTIONS_START,
     fetchCollectionsAsync
   );
+}
+
+export function* shopSagas() {
+  yield all([call(onFetchCollectionsStart)]);
 }
